@@ -112,6 +112,24 @@ void setup()
 // Native main
 int main(int argc, char **argv)
 {
+    printf("argc : %d\n", argc);
+
+    if (argc > 1)
+    {
+        for (int i = 0; i < argc; i++)
+        {
+            printf("argv[%d] : %s\n", i, argv[i]);
+            if (strcmp(argv[i], "run") != 0)
+            {
+                printf("run detected.\n");
+                if (i + 1 >= argc)
+                {
+                    printf("Usage : paxos-9.exe run <App>");
+                    exit(0);
+                }
+            }
+        }
+    }
     graphics::SDLInit(setup);
 }
 
